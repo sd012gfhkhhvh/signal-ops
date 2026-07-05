@@ -1,0 +1,93 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { UsersController } from './users.controller';
+import { UsersService } from './users.service';
+
+describe('UsersController', () => {
+  let controller: UsersController;
+  let service: Mocked<UsersService>;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [UsersController],
+      providers: [
+        {
+          provide: UsersService,
+          useValue: mock<UsersService>(),
+        },
+      ],
+    }).compile();
+
+    controller = module.get<UsersController>(UsersController);
+    service = module.get<Mocked<UsersService>>(UsersService);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+
+  it('should create a new user', async () => {
+    const user = {} as any;
+    service.create.mockResolvedValue(user);
+
+    const createUserDto = {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      password: 'password',
+    };
+
+    const result = await controller.create(createUserDto);
+
+    expect(service.create).toHaveBeenCalledTimes(1);
+    expect(service.create).toHaveBeenCalledWith(createUserDto);
+    expect(result).toEqual(user);
+  });
+
+  it('should find all users', async () => {
+    const users = [{} as any];
+    service.findAll.mockResolvedValue(users);
+
+    const result = await controller.findAll();
+
+    expect(service.findAll).toHaveBeenCalledTimes(1);
+    expect(result).toEqual(users);
+  });
+
+  it('should find user by id', async () => {
+    const user = {} as any;
+    service.findOne.mockResolvedValue(user);
+
+    const result = await controller.findOne('1');
+
+    expect(service.findOne).toHaveBeenCalledTimes(1);
+    expect(service.findOne).toHaveBeenCalledWith('1');
+    expect(result).toEqual(user);
+  });
+
+  it('should update user by id', async () => {
+    const user = {} as any;
+    service.update.mockResolvedValue(user);
+
+    const updateUserDto = {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      password: 'password',
+    };
+
+    const result = await controller.update('1', updateUserDto);
+
+    expect(service.update).toHaveBeenCalledTimes(1);
+    expect(service.update).toHaveBeenCalledWith('1', updateUserDto);
+    expect(result).toEqual(user);
+  });
+
+  it('should remove user by id', async () => {
+    const user = {} as any;
+    service.remove.mockResolvedValue(user);
+
+    const result = await controller.remove('1');
+
+    expect(service.remove).toHaveBeenCalledTimes(1);
+    expect(service.remove).toHaveBeenCalledWith('1');
+    expect(result).toEqual(user);
+  });
+});
