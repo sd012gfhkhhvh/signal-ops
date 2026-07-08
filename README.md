@@ -329,10 +329,28 @@ Status:
 
 ---
 
+## Development Entry Points
+
+For humans:
+
+- `docs/project/PROJECT_STATUS.md`
+
+For AI agents:
+
+- `AGENT.md`
+
+For architecture:
+
+- `docs/architecture/`
+
+For implementation roadmap:
+
+- `docs/project/IMPLEMENTATION_PLAN.md`
+
 # License
 
 MIT License
 
 ---
 
-> **SignalOps is being built as a portfolio-grade AI Operations Platform that demonstrates modern software architecture, distributed systems, AI-assisted automation, and production-oriented engineering practices.**
+> **SignalOps is being built as a production-grade AI Operations Platform that demonstrates modern software architecture, distributed systems, AI-assisted automation, and production-oriented engineering practices.**

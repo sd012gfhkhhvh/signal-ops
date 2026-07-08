@@ -103,7 +103,7 @@ During architecture planning, the project vision expanded to include incident ma
 
 ### Reason
 
-The broader architecture provides significantly more room for future growth while remaining achievable as a Version 1 portfolio project.
+The broader architecture provides significantly more room for future growth while remaining achievable as a Version 1 MVP project.
 
 ### Impact
 
@@ -378,7 +378,7 @@ Supporting Kubernetes, OpenTelemetry, Prometheus, and custom agents in Version 1
 
 ### Reason
 
-A narrow but complete workflow provides better engineering quality and a stronger portfolio project.
+A narrow but complete workflow provides better engineering quality and a stronger MVP project.
 
 ### Deferred Features
 
